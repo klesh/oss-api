@@ -1,0 +1,29 @@
+{
+  "name": "oss-api",
+  "version": "1.0.0",
+  "description": "simple aliyun oss api client, save you from the problematic SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klesh/oss-api.git"
+  },
+  "keywords": [
+    "aliyun",
+    "oss",
+    "nodejs"
+  ],
+  "author": "Klesh Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klesh/oss-api/issues"
+  },
+  "homepage": "https://github.com/klesh/oss-api#readme",
+  "dependencies": {
+    "bblib": "0.0.12",
+    "mocha": "^5.2.0",
+    "should": "^13.2.3"
+  }
+}
