@@ -1,6 +1,7 @@
 const RestClient = require('bblib/rest-client');
 const _ = require('lodash');
 const crypto = require('crypto');
+const debug = require('debug')('oss-api')
 
 /**
  * @example
@@ -50,7 +51,7 @@ class OssApi extends RestClient {
   }
 
   beforeSend(options) {
-    const {method, headers} = _.defaults(options, {mehotd: 'GET', headers: {}});
+    const {method, headers} = _.defaults(options, {method: 'GET', headers: {}});
     headers['Date'] = new Date().toGMTString();
 
     const builder = [
@@ -84,7 +85,7 @@ class OssApi extends RestClient {
 
     builder.push(options.url);
     const text = builder.join('\n');
-
+    debug('StringToSign: ', text);
     const signature = crypto.createHmac('sha1', keySecret).update(text).digest('base64');
     headers['Authorization'] = `OSS ${keyId}:${signature}`;
   }
