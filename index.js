@@ -37,10 +37,10 @@ class OssApi extends RestClient {
     if (qs) {
       const query = _(qs)
         .map((v, k) => [k, v])
-        .filter(([k, v]) => v instanceof Boolean ? v : true)
+        .filter(([k, v]) => _.isBoolean(v) ? v : true)
         .sortBy(([k]) => k)
         .map(([k, v]) => {
-          if (v instanceof Boolean) {
+          if (_.isBoolean(v)) {
             return encodeURIComponent(k);
           }
           return `${encodeURIComponent(k)}=${encodeURIComponent(v)}`;
