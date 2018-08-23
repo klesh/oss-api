@@ -35,7 +35,7 @@ class OssApi extends RestClient {
   buildResource(path, qs) {
     let url = path;
     if (qs) {
-      url += _(qs)
+      const query = _(qs)
         .map((v, k) => [k, v])
         .filter(([k, v]) => v instanceof Boolean ? v : true)
         .sortBy(([k]) => k)
@@ -46,6 +46,8 @@ class OssApi extends RestClient {
           return `${encodeURIComponent(k)}=${encodeURIComponent(v)}`;
         })
         .join('&');
+      if (query)
+        url += '?' + query;
     }
     return url;
   }
