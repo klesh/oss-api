@@ -1,6 +1,6 @@
 {
   "name": "oss-api",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "simple aliyun oss api client, save you from the problematic SDK",
   "main": "index.js",
   "scripts": {
