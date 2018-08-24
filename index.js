@@ -27,7 +27,7 @@ class OssApi extends RestClient {
     if (!endPoint)
       throw new Error('opts.endPoint is required');
 
-    super({...opts, prefix: `${protocal || 'https'}://${endPoint}`});
+    super({...opts, prefix: `${protocol || 'https'}://${endPoint}`});
 
     this.opts = opts;
   }
