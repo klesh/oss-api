@@ -1,0 +1,22 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "rules": {
+    "strict": ["error", "global"],
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "semi": ["error", "always"],
+    "object-curly-spacing": "error",
+    "array-bracket-spacing": "error",
+    'no-var': 'error',
+    'no-console': 'off',
+    "no-constant-condition": "off",
+    "no-fallthrough": "off"
+  },
+  "extends": "eslint:recommended"
+}

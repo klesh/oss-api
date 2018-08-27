@@ -2,6 +2,7 @@ const RestClient = require('bblib/rest-client');
 const _ = require('lodash');
 const crypto = require('crypto');
 const debug = require('debug')('oss-api')
+const {resolve} = require('url');
 
 /**
  * @example
@@ -9,7 +10,7 @@ const debug = require('debug')('oss-api')
  * const oss = new OssApi({
  *   keyId: '...',
  *   keySecret: '...',
- *   endPoint: 'oss-cn-beijing.aliyuncs.com'
+ *   endPoint: 'http://oss-cn-beijing.aliyuncs.com'
  * });
  *
  * const bucket = oss.useBucket('foo');
@@ -19,7 +20,7 @@ const debug = require('debug')('oss-api')
  */
 class OssApi extends RestClient {
   constructor(opts) {
-    const {keyId, keySecret, endPoint, bucketName, ...rest} = opts;
+    const {keyId, keySecret, endPoint, ...rest} = opts;
     if (!keyId)
       throw new Error('opts.keyId is required');
     if (!keySecret)
@@ -27,11 +28,7 @@ class OssApi extends RestClient {
     if (!endPoint)
       throw new Error('opts.endPoint is required');
 
-    let baseUrl = endPoint;
-    if (bucketName) {
-      baseUrl = path.join(endPoint, bucketName);
-    }
-    super(_.defaultsDeep(rest, {defaults: {baseUrl}}));
+    super(_.defaultsDeep(rest, {defaults: {baseUrl: endPoint}}));
 
     this.opts = opts;
   }

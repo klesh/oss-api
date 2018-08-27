@@ -4,9 +4,10 @@ const OssApi = require('../index');
 describe('oss api', async function() {
   const keyId = process.env.OSS_API_KEY;
   const keySecret = process.env.OSS_API_SECRET;
-  const endPoint = process.env.OSS_API_ENDPOINT || 'oss-cn-beijing.aliyuncs.com';
+  const endPoint = process.env.OSS_API_ENDPOINT || 'http://oss-cn-beijing.aliyuncs.com';
   const objectKey = process.env.OSS_API_OBJECT_KEY || 'oss-api-test/foo.bar';
   const bucketName = process.env.OSS_API_BUCKET;
+
 
   it('signature', async function() {
     const oss = new OssApi({
