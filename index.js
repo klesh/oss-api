@@ -27,7 +27,11 @@ class OssApi extends RestClient {
     if (!endPoint)
       throw new Error('opts.endPoint is required');
 
-    super(_.defaultsDeep(rest, {defaults: {baseUrl: endPoint}}));
+    let baseUrl = endPoint;
+    if (bucketName) {
+      baseUrl = path.join(endPoint, bucketName);
+    }
+    super(_.defaultsDeep(rest, {defaults: {baseUrl}}));
 
     this.opts = opts;
   }
