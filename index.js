@@ -19,7 +19,7 @@ const debug = require('debug')('oss-api')
  */
 class OssApi extends RestClient {
   constructor(opts) {
-    const {keyId, keySecret, endPoint, bucketName, protocol} = opts;
+    const {keyId, keySecret, endPoint, bucketName, ...rest} = opts;
     if (!keyId)
       throw new Error('opts.keyId is required');
     if (!keySecret)
@@ -27,7 +27,7 @@ class OssApi extends RestClient {
     if (!endPoint)
       throw new Error('opts.endPoint is required');
 
-    super({...opts, prefix: `${protocol || 'https'}://${endPoint}`});
+    super(_.defaultsDeep(rest, {defaults: {baseUrl: endPoint}}));
 
     this.opts = opts;
   }
