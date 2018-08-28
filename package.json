@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/klesh/oss-api#readme",
   "dependencies": {
-    "bblib": "2.0.3",
+    "bblib": "2.0.4",
     "debug": "^3.1.0"
   },
   "devDependencies": {
